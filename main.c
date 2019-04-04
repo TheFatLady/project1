@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-int a(int bef[3]={"raw"}, int aft[3]={"enc"});
+void a(int bef[], int aft[]);
+
+FILE *fp;
 
 int main (void)
 {
@@ -42,15 +44,20 @@ int main (void)
     return 0;
 }
 
-int a(int bef[7]={"message"}){ 
-    char enc, key = 4;
+void a(int bef[], int aft[]){ 
+    char key = 4;
     int i = 0, n = 0;
-    while (i<10){   //make it less than letters  
+    fp = fopen(text1.txt, "r"); //read mode
+    
+    while (i<text.length()  ){   //make it less than letters  
     aft[n] = (bef[i]+key)*(%26);
     i++;
+    
+    while(( = fgetc(fp)) != EOF)
+      printf("%c", ch);
+ 
+   fclose(fp);
     }
 }
 
-
-https://uonline.newcastle.edu.au/bbcswebdav/pid-4076543-dt-content-rid-20451879_1/courses/CRS.126462.2019.S1/che_fix.webm
 
