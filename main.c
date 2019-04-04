@@ -10,7 +10,7 @@ int main (void)
     printf("    ROTATION AND SUBSTITUTION CYPHER ENCRYPTION/DECRYPTION\n");
     printf("---------------------------------------------------------------\n\n");
 
-
+//comment
     do{
     printf("Main Menu\n");
     printf("a. ENCRYPT with rotation cypher\n");
