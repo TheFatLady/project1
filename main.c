@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-char rotation_enc(int key);
+void rotation_enc(int key);
+//char rotation_dec(int key);
 
 
 
-
-int main ()
-{
+int main () {
+    
     int key;
     char menu_option;
     
-     printf("Enter your access key: \n");
+     printf("Enter a key: \n");
     scanf("%d", &key);
    
 
@@ -18,13 +18,14 @@ int main ()
     printf("---------------------------------------------------------------\n\n");
 
 //comment
-    do{
+    
     printf("Main Menu\n");
     printf("a. ENCRYPT with rotation cypher\n");
     printf("b. DECRYPTION of rotation cypher given rotation amount\n");
     printf("c. DECRYPTION of rotation cypher\n");
     printf(" Please enter an option from the main menu: ");
-    scanf("%c",&menu_option);
+    scanf(" %c",&menu_option);
+    printf("%c\n",menu_option);
 
 
 
@@ -32,7 +33,7 @@ int main ()
 
     case 'a':
         printf("Searching for data...");
-        printf("encrypting...");
+        printf("encrypting...\n");
         rotation_enc(key);      //call function
     
         break;
@@ -41,31 +42,32 @@ int main ()
     default:
         printf("invalid input");
             break;
-    }
+}
+
     
-    }
-    while(menu_option !='e');
     return 0;
 }
 
 
 
-char rotation_enc(int key){ 
-    
+void rotation_enc(int key){
     int i = 0;
     FILE *input1;
     char aft[100];
-    input1 = fopen("text1.txt", "r"); //read mode
+    input1 = fopen("input1.txt", "r"); //read mode
+
     
-    
-    while(fscanf(input1, "%c", &aft[i]) != EOF) {                //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
+    while(!feof(input1)) {
+     fscanf(input1, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
      aft[i] = aft[i] + key;
      printf("%c", aft[i]);
-    
-    
 }
+printf("\n ");
    fclose(input1);
-    }
+}
+
+//char rotation_dec(int key){}
+    
 
 
 
