@@ -1,13 +1,18 @@
 #include <stdio.h>
 
-void a(int bef[], int aft[]);
+char rotation_enc(int key);
 
-FILE *fp;
 
-int main (void)
+
+
+int main ()
 {
+    int key;
     char menu_option;
     
+     printf("Enter your access key: \n");
+    scanf("%d", &key);
+   
 
     printf("    ROTATION AND SUBSTITUTION CYPHER ENCRYPTION/DECRYPTION\n");
     printf("---------------------------------------------------------------\n\n");
@@ -22,42 +27,45 @@ int main (void)
     scanf("%c",&menu_option);
 
 
-//comment
+
     switch(menu_option){
 
     case 'a':
         printf("Searching for data...");
         printf("encrypting...");
-        a(aft[n]);
-        for (n = 0, n<25, n++){
-        printf(" %d", aft[n]);
+        rotation_enc(key);      //call function
+    
         break;
-       return 0;
+      //return 0;
        
     default:
         printf("invalid input");
             break;
     }
-
-    }while(menu_option !='e');
+    
     }
+    while(menu_option !='e');
     return 0;
 }
 
-void a(int bef[], int aft[]){ 
-    char key = 4;
-    int i = 0, n = 0;
-    fp = fopen(text1.txt, "r"); //read mode
+
+
+char rotation_enc(int key){ 
     
-    while (i<text.length()  ){   //make it less than letters  
-    aft[n] = (bef[i]+key)*(%26);
-    i++;
+    int i = 0;
+    FILE *input1;
+    char aft[100];
+    input1 = fopen("text1.txt", "r"); //read mode
     
-    while(( = fgetc(fp)) != EOF)
-      printf("%c", ch);
- 
-   fclose(fp);
-    }
+    
+    while(fscanf(input1, "%c", &aft[i]) != EOF) {                //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
+     aft[i] = aft[i] + key;
+     printf("%c", aft[i]);
+    
+    
 }
+   fclose(input1);
+    }
+
 
 
