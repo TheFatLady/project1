@@ -25,15 +25,15 @@ int main () {
     printf("c. DECRYPTION of rotation cypher\n");
     printf(" Please enter an option from the main menu: ");
     scanf(" %c",&menu_option);
-    printf("%c\n",menu_option);
+  
 
 
 
     switch(menu_option){
 
     case 'a':
-        printf("Searching for data...");
-        printf("encrypting...\n");
+        printf("\nSearching for data...\n");
+        printf("\nencrypting...\n \n");
         rotation_enc(key);      //call function
     
         break;
@@ -53,20 +53,31 @@ int main () {
 void rotation_enc(int key){
     int i = 0;
     FILE *input1;
+    FILE *output1;
     char aft[100];
     input1 = fopen("input1.txt", "r"); //read mode
+    output1 = fopen("output1.txt", "w");
 
     
-    while(!feof(input1)) {
+    while(fscanf(input1, "%c", &aft[i]) == 1) {
      fscanf(input1, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
      aft[i] = aft[i] + key;
      printf("%c", aft[i]);
+     
+     i++;
 }
-printf("\n ");
+fprintf(output1, "%s", aft);
+printf("%s", aft);
+
+printf("\n \n \n ");
    fclose(input1);
+      fclose(output1);
+   
 }
 
-//char rotation_dec(int key){}
+//char rotation_dec(int key){
+    
+
     
 
 
