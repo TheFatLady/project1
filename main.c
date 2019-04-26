@@ -42,86 +42,114 @@ int main () {
         printf("\nSearching for data...\n");    //aesthetic text
         printf("\nencrypting...\n \n");
         rotation_enc(key);      //call function
-    
         break;
-      //return 0;
+      
     
     case 'b':
         printf("\nSearching for data...\n");
         printf("\ndecrypting...\n\n");
-        rotation_dec(key);      //call decryption function
-        
+       //rotation_dec(key);      //call decryption function
         break;
     
     default:
         printf("invalid input\n");          //default response in case invalid response is entered
             break;
 }
-
-    
     return 0;
 }
 
 
 
+
+
 void rotation_enc(int key){
     int i = 0;
+   
     FILE *input1;               //open files, remember to close them in the function aswell
-    FILE *output1;
     char aft[640];
     input1 = fopen("input1.txt", "r"); //read mode
-    output1 = fopen("output1.txt", "w");    //write mode
 
     while(feof(input1) == 0){
            fscanf(input1, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
-     aft[i] = aft[i] + key;
+     //aft[i] = aft[i] + key;
      
-      if ((aft[i] >= 'A') && (aft[i] <= 'Z'))  {           //modulous operation
-        aft[i] = (aft[i] - 'A' + key)%26+'A';           // - key for decryption
-    }
-     else if(aft[i] >= 'a') && (aft[i] <= 'z')) {
-         aft[i] = aft[i] - 32
-     }
+     if((aft[i] >= 97) && (aft[i] <= 122)) {        // ASCII all lowercase numbers (97-122)
+         aft[i] = aft[i] - 32;                      //minus 32 to convert to uppercase
+}
+
+      if ((aft[i] >= 65) && (aft[i] <= 90))  {           //modulous operation
+        aft[i] = (aft[i] - 65 + key)%26+65;           // - key for decryption
+}
+      
      
      printf("%c", aft[i]);
      i++;
 }
 printf("\n \n \n ");
    fclose(input1);
-      fclose(output1);
-   
-}
+   }
+
+
 
 void rotation_dec(int key){
-    int i = 0;                 //open files, remember to close them in the function aswell
-    FILE *input2;
+    int i = 0;
+   printf("test");
+    FILE *input2;               //open files, remember to close them in the function aswell
     char aft[640];
-    input2 = fopen("input2.txt", "r"); //read modeb
+    input2 = fopen("input2.txt", "r"); //read mode
+
     while(feof(input2) == 0){
-        fscanf(input2, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
-        
-    
-        
-         if ((aft[i] >= 'A') && (aft[i] <= 'Z')) {             //modulous operation
-        aft[i] = aft[i] - 32;                                   // minus 32 to get upper case 
-    else if ( )
-    
-        aft[i] = (aft[i] - key)%26+'A';                   
+           fscanf(input2, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
+     //aft[i] = aft[i] + key;
+     
+     if((aft[i] >= 97) && (aft[i] <= 122)) {        // ASCII all lowercase numbers (97-122)
+         aft[i] = aft[i] - 32;                      //minus 32 to convert to uppercase
+}
 
-
-
-
-        printf("%c", aft[i]);
-        i++;
-    }
-
-printf(" the complete string: \n%s", aft);
-
+      if ((aft[i] >= 65) && (aft[i] <= 90))  {           //modulous operation
+        aft[i] = (aft[i] - 65 - key)%26+65;           // - key for decryption
+}
+      
+     
+     printf("%c", aft[i]);
+     i++;
+}
 printf("\n \n \n ");
    fclose(input2);
+   }
+
+
+
+//void rotation_dec(int key){
+    //int i = 0;                 //open files, remember to close them in the function aswell
+    //FILE *input2;
+    //char aft[640];
+     //printf("test1");
+    //input2 = fopen("input2.txt", "r"); //read mode
+    //while(feof(input2) == 0){
+        //scanf(input2, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
+      //printf("teest");
+    //if ((aft[i] >= 97) && (aft[i] <= 122)) {             //modulous operation
+      //aft[i] = aft[i] - 32;                                   // minus 32 to get upper case 
+     // printf("%c:%d"\n, aft[i], aft[i]);
+  
+  //printf("test");
+       
+
+
+
+
+          //fclose(input2);
+        //i++;
+    //}
+
+
+
+
+
      
    
-}
+
     
 
 
