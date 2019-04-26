@@ -11,7 +11,7 @@ int main () {
     char menu_option;
     
      printf("Enter a key: \n");
-    scanf("%d", &key);
+    scanf("%d", &key); //make it between 0 and 25
    
 
     printf("    ROTATION AND SUBSTITUTION CYPHER ENCRYPTION/DECRYPTION\n");
@@ -54,20 +54,21 @@ void rotation_enc(int key){
     int i = 0;
     FILE *input1;
     FILE *output1;
-    char aft[100];
+    char aft[64];
     input1 = fopen("input1.txt", "r"); //read mode
     output1 = fopen("output1.txt", "w");
 
     
-    while(fscanf(input1, "%c", &aft[i]) == 1) {
-     fscanf(input1, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
+    while(feof(input1) == 0){
+           fscanf(input1, "%c", &aft[i]);                  //while(filescanf(filename "%d", &savetoarray as long as this does not equal 0))
      aft[i] = aft[i] + key;
      printf("%c", aft[i]);
-     
      i++;
-}
-fprintf(output1, "%s", aft);
-printf("%s", aft);
+       
+    }
+    
+    
+
 
 printf("\n \n \n ");
    fclose(input1);
