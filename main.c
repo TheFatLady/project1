@@ -113,7 +113,9 @@ void rotation_dec(int key){
         aft[i] = (aft[i] - 65 - key)%26+65;         // - key for decryption
 }   
        
-
+    if (aft[i]== 40) {
+        aft[i]= aft[i] + 18;            // SPACE BARS gets decrypted and then decrypted again below
+    }
 
       if ((aft[i] >= 30) && (aft[i] <= 64) && aft[i]!=40) {
           aft[i] = aft[i] +26;
