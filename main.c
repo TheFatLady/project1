@@ -15,7 +15,7 @@ int main () {
      printf("Enter a key: \n");
     scanf("%d", &key); //make it between 0 and 25
     if (key > 26) {
-        printf("error");
+        printf("Error\n");
         return 0;
     }
    
@@ -48,7 +48,7 @@ int main () {
     case 'b':
         printf("\nSearching for data...\n");
         printf("\ndecrypting...\n\n");
-       //rotation_dec(key);      //call decryption function
+       rotation_dec(key);      //call decryption function
         break;
     
     default:
@@ -77,8 +77,11 @@ void rotation_enc(int key){
          aft[i] = aft[i] - 32;                      //minus 32 to convert to uppercase
 }
 
-      if ((aft[i] >= 65) && (aft[i] <= 90))  {           //modulous operation
+     if ((aft[i] >= 65) && (aft[i] <= 90))  {           //modulous operation
         aft[i] = (aft[i] - 65 + key)%26+65;           // - key for decryption
+}
+     if(aft[i] == 40) {
+         aft[i]= aft[i];
 }
       
      
@@ -93,7 +96,7 @@ printf("\n \n \n ");
 
 void rotation_dec(int key){
     int i = 0;
-   printf("test");
+   
     FILE *input2;               //open files, remember to close them in the function aswell
     char aft[640];
     input2 = fopen("input2.txt", "r"); //read mode
@@ -107,8 +110,15 @@ void rotation_dec(int key){
 }
 
       if ((aft[i] >= 65) && (aft[i] <= 90))  {           //modulous operation
-        aft[i] = (aft[i] - 65 - key)%26+65;           // - key for decryption
+        aft[i] = (aft[i] - 65 - key)%26+65;         // - key for decryption
+}   
+       
+
+
+      if ((aft[i] >= 30) && (aft[i] <= 64) && aft[i]!=40) {
+          aft[i] = aft[i] +26;
 }
+        
       
      
      printf("%c", aft[i]);
